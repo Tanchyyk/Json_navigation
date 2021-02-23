@@ -3,6 +3,9 @@ from collections.abc import Iterable
 
 
 def check_type(data):
+    """
+    Check type of an object. Return False if it is dictionary or list, True - otherwise.
+    """
     if isinstance(data, str):
         return True
     elif isinstance(data, Iterable):
@@ -11,6 +14,9 @@ def check_type(data):
 
 
 def get_value_from_json(path):
+    """
+    Function helps you to navigate in json object.
+    """
     with open(path, "r") as file:
         data = json.load(file)
 
