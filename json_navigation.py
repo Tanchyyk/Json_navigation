@@ -66,4 +66,4 @@ def get_value_from_json(data):
             data = data[user_key]
 
 # Print: get_value_from_json(get_json_object()) to test a program
-# Do not forget to inpet a bearer token in line 12
+# Do not forget to input a bearer token in line 12
