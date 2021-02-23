@@ -1,5 +1,26 @@
-import json
 from collections.abc import Iterable
+import requests
+
+
+def get_json_object():
+    """
+    Return a json object from Twitter Api, using bearer token.
+    """
+    base_url = "https://api.twitter.com/1.1/friends/list.json"
+
+    # input here your bearer token:
+    bearer_token = ""
+
+    search_headers = {
+        "Authorization": f'Bearer {bearer_token}'
+    }
+    search_params = {
+        "screen_name": "@BarackObama",  # input here a username
+        "count": 4
+    }
+
+    response = requests.get(base_url, headers=search_headers, params=search_params)
+    return response.json()
 
 
 def check_type(data):
@@ -13,13 +34,11 @@ def check_type(data):
     return True
 
 
-def get_value_from_json(path):
+def get_value_from_json(data):
     """
     Function helps you to navigate in json object.
     Return a value of the key, you have input.
     """
-    with open(path, "r") as file:
-        data = json.load(file)
 
     while True:
         print(data.keys())
@@ -45,3 +64,6 @@ def get_value_from_json(path):
         elif isinstance(data[user_key], dict):
             print("The value for this key is a dictionary!")
             data = data[user_key]
+
+# Print: get_value_from_json(get_json_object()) to test a program
+# Do not forget to inpet a bearer token in line 12
