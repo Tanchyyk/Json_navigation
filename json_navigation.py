@@ -16,6 +16,7 @@ def check_type(data):
 def get_value_from_json(path):
     """
     Function helps you to navigate in json object.
+    Return a value of the key, you have input.
     """
     with open(path, "r") as file:
         data = json.load(file)
